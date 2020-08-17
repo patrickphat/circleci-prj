@@ -11,6 +11,7 @@ jobs:
             sh conda.sh -b
             source $HOME/miniconda3/bin/activate
             pip install -U pytest
+            find . -name test_math.py   
             pytest test_math.py -k "test_add"
   test_minus:
     docker:
@@ -18,7 +19,6 @@ jobs:
     steps:
       - run:
           command: |  # use pipenv to install dependencies
-            sudo apt-get install -y poppler-utils
             curl -o conda.sh https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.2-Linux-x86_64.sh
             sh conda.sh -b
             source $HOME/miniconda3/bin/activate
