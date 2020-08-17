@@ -23,6 +23,7 @@ jobs:
             sh conda.sh -b
             source $HOME/miniconda3/bin/activate
             pip install -U pytest
+            find . -name test_math.py   
             pytest test_math.py -k "test_minus"
  
 workflows:
