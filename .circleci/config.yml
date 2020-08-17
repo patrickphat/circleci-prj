@@ -4,25 +4,25 @@ jobs:
     #working_directory: ~/circleci-demo-python-django
     docker:
       - image: circleci/python:3.6.4 # every job must define an image for the docker executor and subsequent jobs may define a different image.
-      steps:
-        - run:
-            command: |  # use pipenv to install dependencies
-              sudo apt-get install -y poppler-utils
-              curl -o conda.sh https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.2-Linux-x86_64.sh
-              sh conda.sh -b
-              source $HOME/miniconda3/bin/activate
-              pytest test_math.py -k "test_add"
+    steps:
+      - run:
+          command: |  # use pipenv to install dependencies
+            sudo apt-get install -y poppler-utils
+            curl -o conda.sh https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.2-Linux-x86_64.sh
+            sh conda.sh -b
+            source $HOME/miniconda3/bin/activate
+            pytest test_math.py -k "test_add"
   test_minus:
     docker:
       - image: circleci/python:3.6.4 # every job must define an image for the docker executor and subsequent jobs may define a different image.
-      steps:
-        - run:
-            command: |  # use pipenv to install dependencies
-              sudo apt-get install -y poppler-utils
-              curl -o conda.sh https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.2-Linux-x86_64.sh
-              sh conda.sh -b
-              source $HOME/miniconda3/bin/activate
-              pytest test_math.py -k "test_minus"
+    steps:
+      - run:
+          command: |  # use pipenv to install dependencies
+            sudo apt-get install -y poppler-utils
+            curl -o conda.sh https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.2-Linux-x86_64.sh
+            sh conda.sh -b
+            source $HOME/miniconda3/bin/activate
+            pytest test_math.py -k "test_minus"
  
 workflows:
   version: 2
