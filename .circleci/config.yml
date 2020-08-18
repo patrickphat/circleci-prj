@@ -32,7 +32,6 @@ jobs:
     parallelism: 2
     steps:
       - checkout
-      - prepare_env
       - test_file:
           file_path: tests/test_math.py
 
