@@ -10,14 +10,7 @@ executors:
     resource_class: small
 
 commands:
-  prepare_env:
-    steps:
-      - run:
-            command: |  # use pipenv to install dependencies
-              curl -o conda.sh https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.2-Linux-x86_64.sh
-              sh conda.sh -b
-              source $HOME/miniconda3/bin/activate
-              pip install -U pytest 
+
   test_file:
     parameters:
       file_path:
@@ -25,7 +18,13 @@ commands:
         type: string
         
     steps:
-      - run: pytest <<parameters.file_path>>
+      - run:
+          command: |  # use pipenv to install dependencies
+            curl -o conda.sh https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.2-Linux-x86_64.sh
+            sh conda.sh -b
+            source $HOME/miniconda3/bin/activate
+            pip install -U pytest  
+            pytest <<parameters.file_path>>
     
 jobs:
   test_operation:
