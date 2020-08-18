@@ -7,7 +7,6 @@ executors:
   ubuntu-small:
     machine:
       image: ubuntu-1604:201903-01
-      docker_layer_caching: true
     resource_class: small
 
 commands:
