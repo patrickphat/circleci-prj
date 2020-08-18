@@ -25,8 +25,6 @@ commands:
             pip install -U pytest 
             pytest tests/test_math.py -k <<parameters.func_name>>
     
-
-
 jobs:
   test_add:
     executor: ubuntu-small
