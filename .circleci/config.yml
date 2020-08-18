@@ -31,8 +31,7 @@ jobs:
 
  
 workflows:
-  version: 2
   main:
     jobs: 
-        - test_add
-        - test_minus
+      - test_add
+      - test_minus
