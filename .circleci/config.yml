@@ -1,38 +1,38 @@
 version: 2.1
 
 orbs:
-    python: circleci/python@0.2.1
+  python: circleci/python@0.2.1
 commands:
-    test_func_in_math_file:
-        parameters:
-            func_name:
-                type: string
-        steps:
-            run:
-                command: |  # use pipenv to install dependencies
-                  curl -o conda.sh https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.2-Linux-x86_64.sh
-                  sh conda.sh -b
-                  source $HOME/miniconda3/bin/activate
-                  pip install -U pytest
-                  pytest tests/test_math.py -k "<<func_name>>"
-      
+  test_func_in_math_file:
+    parameters:
+      func_name:
+        type: string
+    steps:
+      - run:
+        command: |  # use pipenv to install dependencies
+          curl -o conda.sh https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.2-Linux-x86_64.sh
+          sh conda.sh -b
+          source $HOME/miniconda3/bin/activate
+          pip install -U pytest 
+          pytest tests/test_math.py -k "<<func_name>>"
+    
 
 
 jobs:
-    test_add:
-        steps:
-            test_func_in_math_file:
-                func_name: test_add
+  test_add:
+    steps:
+      test_func_in_math_file:
+        func_name: test_add
       
-    test_minus:
-        steps:
-            test_func_in_math_file:
-                func_name: test_minus
+  test_minus:
+    steps:
+      test_func_in_math_file:
+        func_name: test_minus
 
  
 workflows:
   version: 2
-  build:
+  main:
     jobs: 
         - test_add
         - test_minus
