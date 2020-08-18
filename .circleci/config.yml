@@ -12,7 +12,7 @@ jobs:
             sh conda.sh -b
             source $HOME/miniconda3/bin/activate
             pip install -U pytest
-            pytest tests/my.math.py -k "test_add"
+            pytest tests/test_math.py -k "test_add"
   test_minus:
     docker:
       - image: circleci/python:3.6.4 # every job must define an image for the docker executor and subsequent jobs may define a different image.
@@ -24,7 +24,7 @@ jobs:
             sh conda.sh -b
             source $HOME/miniconda3/bin/activate
             pip install -U pytest
-            pytest tests/my.math.py -k "test_minus"
+            pytest tests/test_math.py -k "test_minus"
 
  
 workflows:
