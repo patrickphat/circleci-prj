@@ -1,4 +1,4 @@
 # circleci-prj
 
 ![](https://circleci.com/gh/patrickphatnguyen/circleci-prj.svg?style=shield)
-Toy CircleCI project
+This is toy project for using Circle CI & pytest
