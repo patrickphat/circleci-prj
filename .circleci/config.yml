@@ -23,12 +23,12 @@ jobs:
     test_add:
         steps:
             test_func_in_file:
-                file_name: test_add
+                func_name: test_add
       
     test_minus:
         steps:
             test_func_in_file:
-                file_name: test_minus
+                func_name: test_minus
 
  
 workflows:
