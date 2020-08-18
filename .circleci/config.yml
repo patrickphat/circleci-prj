@@ -6,6 +6,7 @@ commands:
   test_func_in_math_file:
     parameters:
       func_name:
+        default: "yo"
         type: string
     steps:
       - run:
