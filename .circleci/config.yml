@@ -10,37 +10,34 @@ executors:
     resource_class: small
 
 commands:
-  test_func_in_math_file:
-    parameters:
-      func_name:
-        default: "yo"
-        type: string
-    steps:
-      - checkout
-      - run:
+  prepare_env:
+    - run:
           command: |  # use pipenv to install dependencies
             curl -o conda.sh https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.2-Linux-x86_64.sh
             sh conda.sh -b
             source $HOME/miniconda3/bin/activate
             pip install -U pytest 
-            pytest tests/test_math.py -k <<parameters.func_name>>
+  test_file:
+    parameters:
+      file_path:
+        default: tests/test_math.py
+        type: string
+        
+    steps:
+      - checkout
+      - run: pytest <<parameters.file_path>>
     
 jobs:
-  test_add:
+  test_operation:
     executor: ubuntu-small
+    parallelism: 2
     steps:
-      - test_func_in_math_file:
-          func_name: "test_add"
-      
-  test_minus:
-    executor: ubuntu-small
-    steps:
-      - test_func_in_math_file:
-          func_name: "test_minus"
+      - prepare_env
+      - test_file:
+          file_path: tests/test_math.py
 
  
 workflows:
   main:
     jobs: 
-      - test_add
-      - test_minus
+      - test_operation
