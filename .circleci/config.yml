@@ -20,11 +20,15 @@ commands:
 
 jobs:
   test_add:
+    docker:
+      - image: circleci/python:3.7
     steps:
       - test_func_in_math_file:
           func_name: "test_add"
       
   test_minus:
+    docker:
+      - image: circleci/python:3.7
     steps:
       - test_func_in_math_file:
           func_name: "test_minus"
