@@ -15,7 +15,7 @@ commands:
             sh conda.sh -b
             source $HOME/miniconda3/bin/activate
             pip install -U pytest 
-      - run: pytest tests/test_math.py -k <<parameters.func_name>>
+            pytest tests/test_math.py -k <<parameters.func_name>>
     
 
 
